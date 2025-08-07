@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IHSS Honduras</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&family=Quicksand:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+  <div class="hamb-header">
+    <div class="hamb-logo">IHSS</div>
+    <div class="hamb-menu-icon" id="hamb-menu-toggle">
+      <div class="hamb-bar"></div>
+      <div class="hamb-bar"></div>
+      <div class="hamb-bar"></div>
+    </div>
+    <nav class="hamb-nav" id="hamb-nav-menu">
+      <ul>
+        <li><a href="hospitales-publicos.html">Hospitales Públicos</a></li>
+        <li><a href="hospitales-privados.html">Hospitales Privados</a></li>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+  <section id="inicio" class="hero">
+    <h1>Instituto Hondureño de Seguridad Social</h1>
+    <p>Atención médica de calidad al servicio de Honduras</p>
+  </section>
+  
+  <!-- Sección informativa tipo cartilla larga -->
+
+<!-- Cuadro para Comayagüela y clínicas -->
+
+<!-- Carrusel compacto de ubicaciones IHSS Comayagüela y clínicas -->
+<div class="carrusel" id="carrusel-ubicaciones" style="max-width: 1200px; margin: 32px auto 0 auto;">
+  <button class="carrusel-btn prev carrusel-btn-ubic" onclick="moverCarruselUbicaciones(-1)">&#10094;</button>
+  <div class="carrusel-container" style="display: flex; gap: 24px; justify-content: center; align-items: stretch;">
+    <div class="carrusel-slide card" style="min-width: 260px; max-width: 300px; flex:1; padding: 1.1rem 0.7rem; display: flex; flex-direction: column; align-items: center;">
+      <div style="width:100%; aspect-ratio: 1.5/1; min-height: 140px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px #0001; background: #fff;">
+        <iframe src="https://www.google.com/maps?q=IHSS+Tegucigalpa+Honduras&output=embed" width="100%" height="140" style="border:0; min-width:180px; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <h3 style="margin: 0.7rem 0 0.4rem 0; color: #000000; font-size: 1.08em;">IHSS Tegucigalpa</h3>
+    </div>
+    <div class="carrusel-slide card" style="min-width: 260px; max-width: 300px; flex:1; padding: 1.1rem 0.7rem; display: flex; flex-direction: column; align-items: center;">
+      <div style="width:100%; aspect-ratio: 1.5/1; min-height: 140px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px #0001; background: #fff;">
+        <iframe src="https://www.google.com/maps?q=IHSS+Comayaguela+Honduras&output=embed" width="100%" height="140" style="border:0; min-width:180px; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <h3 style="margin: 0.7rem 0 0.4rem 0; color: #000000; font-size: 1.08em;">IHSS Comayagüela</h3>
+    </div>
+    <div class="carrusel-slide card" style="min-width: 260px; max-width: 300px; flex:1; padding: 1.1rem 0.7rem; display: flex; flex-direction: column; align-items: center;">
+      <div style="width:100%; aspect-ratio: 1.5/1; min-height: 140px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px #0001; background: #fff;">
+        <iframe src="https://www.google.com/maps?q=Clínica+Periférica+IHSS+Comayaguela&output=embed" width="100%" height="140" style="border:0; min-width:180px; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <h3 style="margin: 0.7rem 0 0.4rem 0; color: #000000; font-size: 1.08em;">Clínica Periférica IHSS Comayagüela</h3>
+    </div>
+    <div class="carrusel-slide card" style="min-width: 260px; max-width: 300px; flex:1; padding: 1.1rem 0.7rem; display: flex; flex-direction: column; align-items: center;">
+      <div style="width:100%; aspect-ratio: 1.5/1; min-height: 140px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px #0001; background: #fff;">
+        <iframe src="https://www.google.com/maps?q=IHSS+Kennedy+Tegucigalpa&output=embed" width="100%" height="140" style="border:0; min-width:180px; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <h3 style="margin: 0.7rem 0 0.4rem 0; color: #000000; font-size: 1.08em;">Clínica Periférica Kennedy</h3>
+    </div>
+  </div>
+  <button class="carrusel-btn next carrusel-btn-ubic" onclick="moverCarruselUbicaciones(1)">&#10095;</button>
+</div>
+<script>
+// Carrusel horizontal: muestra todas las ubicaciones a la vez en desktop, solo una en móvil
+function ajustarCarruselUbicaciones() {
+  const container = document.querySelector('#carrusel-ubicaciones .carrusel-container');
+  const slides = document.querySelectorAll('#carrusel-ubicaciones .carrusel-slide');
+  if (window.innerWidth < 700) {
+    slides.forEach((slide, i) => {
+      slide.style.display = 'none';
+    });
+    let carruselIndexUbicaciones = 0;
+    function mostrarSlideUbicaciones(n) {
+      carruselIndexUbicaciones = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.style.display = (i === carruselIndexUbicaciones) ? 'flex' : 'none';
+      });
+    }
+    window.moverCarruselUbicaciones = function(dir) {
+      mostrarSlideUbicaciones(carruselIndexUbicaciones + dir);
+    };
+    mostrarSlideUbicaciones(0);
+    document.querySelectorAll('.carrusel-btn-ubic').forEach(btn => btn.style.display = 'block');
+  } else {
+    slides.forEach(slide => slide.style.display = 'flex');
+    document.querySelectorAll('.carrusel-btn-ubic').forEach(btn => btn.style.display = 'none');
+  }
+}
+window.addEventListener('DOMContentLoaded', ajustarCarruselUbicaciones);
+window.addEventListener('resize', ajustarCarruselUbicaciones);
+
+
+// Información de especialidades y requisitos (sin "¿Qué es?" y requisitos bien redactados)
+const especialidadesInfo = {
+  'Medicina General': {
+    desc: 'Atención básica, diagnóstico y prevención de enfermedades comunes.',
+    req: 'Por favor, presenta tu carnet del IHSS y tu documento de identidad. Solicita tu cita en ventanilla o en línea para ser atendido.'
+  },
+  'Pediatría': {
+    desc: 'Salud y atención médica para niños y adolescentes.',
+    req: 'Lleva el carnet del IHSS del menor y del responsable, así como el documento de identidad. Solicita la cita en ventanilla.'
+  },
+  'Ginecología': {
+    desc: 'Salud de la mujer, embarazo, control prenatal y enfermedades ginecológicas.',
+    req: 'Presenta tu carnet del IHSS y documento de identidad. Solicita tu cita en ventanilla.'
+  },
+  'Cirugía': {
+    desc: 'Intervenciones quirúrgicas programadas y de emergencia.',
+    req: 'Debes ser referido por Medicina General o especialidad. Lleva tu carnet y estudios previos.'
+  },
+  'Odontología': {
+    desc: 'Prevención, diagnóstico y tratamiento de enfermedades bucales.',
+    req: 'Solicita tu cita en ventanilla y presenta tu carnet del IHSS y documento de identidad.'
+  },
+  'Laboratorio Clínico': {
+    desc: 'Exámenes médicos de sangre, orina y otros análisis clínicos.',
+    req: 'Lleva tu orden médica, carnet del IHSS y documento de identidad.'
+  },
+  'Cardiologia': {
+    desc: 'Diagnóstico y tratamiento de enfermedades del corazón.',
+    req: 'Debes ser referido por Medicina General. Presenta tu carnet y estudios previos.'
+  },
+  'Medicina Interna': {
+    desc: 'Tratamiento de enfermedades crónicas y complejas en adultos.',
+    req: 'Solicita tu cita con referencia de Medicina General y presenta tu carnet.'
+  },
+  'Oncologia': {
+    desc: 'Diagnóstico y tratamiento integral del cáncer.',
+    req: 'Debes ser referido por un especialista. Lleva tu carnet, estudios y referencia.'
+  },
+  'Nefrologia': {
+    desc: 'Diagnóstico y tratamiento de enfermedades renales.',
+    req: 'Debes ser referido por Medicina General. Presenta tu carnet y estudios previos.'
+  },
+  'Dermatologia': {
+    desc: 'Atención de enfermedades de la piel, cabello y uñas.',
+    req: 'Solicita tu cita en ventanilla. Presenta tu carnet y documento de identidad.'
+  },
+  'Psicologia': {
+    desc: 'Atención a la salud mental y emocional.',
+    req: 'Solicita tu cita en ventanilla. Presenta tu carnet y documento de identidad.'
+  },
+  'Nutricion': {
+    desc: 'Orientación y tratamiento para una alimentación saludable.',
+    req: 'Solicita tu cita en ventanilla. Presenta tu carnet y documento de identidad.'
+  },
+  'Oftalmologia': {
+    desc: 'Diagnóstico y tratamiento de enfermedades de los ojos.',
+    req: 'Solicita tu cita en ventanilla. Presenta tu carnet y documento de identidad.'
+  },
+  'Endocrinologia': {
+    desc: 'Trastornos hormonales y de las glándulas endocrinas.',
+    req: 'Debes ser referido por Medicina General. Presenta tu carnet y estudios previos.'
+  },
+  'Neurologia': {
+    desc: 'Diagnóstico y tratamiento de enfermedades del sistema nervioso.',
+    req: 'Debes ser referido por Medicina General. Presenta tu carnet y estudios previos.'
+  },
+  'Geriatria': {
+    desc: 'Atención médica integral para adultos mayores.',
+    req: 'Solicita tu cita en ventanilla. Presenta tu carnet y documento de identidad.'
+  }
+};
+
+// Mostrar post-it bonito sobre la tarjeta al dar clic en Info
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#especialidades .card button').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      // Cerrar otros post-its
+      document.querySelectorAll('.card-tooltip').forEach(tip => tip.classList.remove('active'));
+      const card = btn.closest('.card');
+      const title = card.querySelector('h3').textContent.trim();
+      const info = especialidadesInfo[title];
+      const tooltip = card.querySelector('.card-tooltip');
+      if (info && tooltip) {
+        tooltip.innerHTML = `<span class="close-postit" style="position:absolute;top:7px;right:13px;font-size:1.2em;cursor:pointer;font-weight:bold;">&times;</span><b>${info.desc}</b><br><br><span style='font-size:0.98em;'>${info.req}</span>`;
+        tooltip.classList.add('active');
+        // Cerrar al dar clic en la X
+        tooltip.querySelector('.close-postit').onclick = function(ev) {
+          tooltip.classList.remove('active');
+          ev.stopPropagation();
+        };
+      }
+    });
+  });
+  // Cerrar post-it al hacer clic fuera
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.card-tooltip').forEach(tip => tip.classList.remove('active'));
+  });
+});
+</script>
+</center>
+  </body>
+  <section id="especialidades">
+    <h2>Especialidades Médicas</h2>
+    <div class="grid-cards">
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.KgNRqCgF6aU6SjASaYtr2QAAAA?w=256&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Medicina General">
+        <h3>Medicina General</h3>
+        <p>Atención básica y prevención.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="data:image/webp;base64,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" alt="Pediatría">
+        <h3>Pediatría</h3>
+        <p>Salud infantil desde el nacimiento.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.x1tKt-iXdWaeEnwE8M8KjQHaEc?w=270&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Ginecología">
+        <h3>Ginecología</h3>
+        <p>Salud de la mujer y embarazo.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://www.clinicapasteur.org.ec/images/portfolio/cirugia.jpg" alt="Cirugía">
+        <h3>Cirugía</h3>
+        <p>Intervenciones quirúrgicas seguras.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://www.isss.gob.sv/wp-content/uploads/2022/08/odonto1-768x768.png" alt="Odontología">
+        <h3>Odontología</h3>
+        <p>Salud bucal completa.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://www.laprensa.hn/binrepository/1200x900/0c0/0d0/none/11004/XGXO/anciana-de-85-anos-muere-tras-el-ataq_3786010_20230221141134.jpg" alt="Laboratorio">
+        <h3>Laboratorio Clínico</h3>
+        <p>Exámenes médicos precisos.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.C8aYdVgYE9XoLfWIAx7FJQHaE8?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Odontología">
+        <h3>Cardiologia</h3>
+        <p>Deteccion y tratamieto de problemas cardilogicos.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://dimedinet.com/wp-content/uploads/2020/11/Dimedinet-Medicina_Interna-1.jpg" alt="Odontología">
+        <h3>Medicina Interna</h3>
+        <p>Tratmiento de enfermedades base y cronicas.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/R.08acd7f77d70a610ed0c1b51028a0530?rik=fK%2bp8HJ7rYGlFQ&pid=ImgRaw&r=0" alt="Odontología">
+        <h3>Oncologia</h3>
+        <p>Tratamiento de cancer en todas sus etapas.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="data:image/webp;base64,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" alt="Odontología">
+        <h3>Nefrologia</h3>
+        <p>Salud y tratamiento de los riñones.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.Dbh3UnkaInCQA2HYPFgEggHaD8?w=270&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Odontología">
+        <h3>Dermatologia</h3>
+        <p>Salud y tratamiento de problemas de piel,cabello y uñas.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.q9NT5NDB_GEWm7Kdy7vstwHaE8?r=0&w=800&h=534&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Odontología">
+        <h3>Psicologia</h3>
+        <p>Salud mental,emocionales.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.9nQ9zcwVAgiV502iZGE9pAHaDt?w=343&h=175&c=7&r=0&o=7&pid=1.7&rm=3" alt="Cirugía">
+        <h3>Nutricion</h3>
+        <p>Tratamiento para una vida saludable .</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.JI2-bDwEaO4Q-zFT5lf5ywHaEI?w=303&h=180&c=7&r=0&o=5&pid=1.7" alt="Cirugía">
+        <h3>Oftalmologia</h3>
+        <p>Tratamientos y intervenciones a nivel oftalmologico.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.oWY4EqE4RhYE3wbCrrSxTgHaEK?w=326&h=183&c=7&r=0&o=7&pid=1.7&rm=3" alt="Cirugía">
+        <h3>Endocrinologia</h3>
+        <p>Especialidad que trata los transtornos hormonales y de las glandulas endocrinas.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.XRZlPQkCk0lrbOAJtJCBwAHaE8?w=235&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Cirugía">
+        <h3>Neurologia</h3>
+        <p>Tratamieno a niveles cerebrales.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.U51zsRhZ4kb-ZI7YmlZnoQHaDx?w=350&h=178&c=7&r=0&o=7&pid=1.7&rm=3" alt="Cirugía">
+        <h3>Geriatria</h3>
+        <p>Consulta y tratamiento de prevencion para adultos mayores.</p>
+        <button>Info</button>
+        <div class="card-tooltip"></div>
+      </div>
+    </div>
+  </section>
+
+  
+ 
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <h3 id="modal-title"></h3>
+    <p id="modal-desc"></p>
+  </div>
+
+  <footer>
+    
+    <p>&copy; 2025 IHSS Honduras</p>
+  </footer>
+ 
+</body>
+</html>
